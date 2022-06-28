@@ -1,3 +1,7 @@
-/* .btn-warning {
-    background: #ed7a07 !important;
-} */
+.nav-link {
+    color: whitesmoke !important;
+}
+
+.nav-item :hover {
+    color: rgba(227, 152, 13, 0.804) !important;
+}

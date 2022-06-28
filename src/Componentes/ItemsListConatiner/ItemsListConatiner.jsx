@@ -1,11 +1,19 @@
- 
+import "./ItemList.css"
+import ItemsList from "./ItemList"
 
-function ItemsListConatiner(props) {
+const ItemsListConatiner = ({})=> {
+  
+    
   return (
     <div>
-        <h1>Hola Mundo!!</h1>
+      
+      <ItemsList/>
+     
     </div>
   )
 }
 
 export default ItemsListConatiner
+
+
+

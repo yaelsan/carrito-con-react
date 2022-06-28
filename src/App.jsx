@@ -1,6 +1,10 @@
+
+import ItemsListConatiner from './componentes/ItemsListConatiner/ItemsListConatiner';
+import NavBar from './componentes/Nav/NavBar';
+
+
 import './App.css';
-import ItemsListConatiner from './Componentes/ItemsListConatiner/ItemsListConatiner';
-import NavBar from './Componentes/Nav/NavBar';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
@@ -10,5 +14,5 @@ function App() {
     </div>
   );
 }
-
+ 
 export default App;
