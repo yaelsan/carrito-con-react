@@ -5,3 +5,45 @@
 .nav-item :hover {
     color: rgba(227, 152, 13, 0.804) !important;
 }
+
+.estaActivadoPapas {
+    color: #fff !important;
+    font-size: 20px;
+    text-decoration: none !important;
+    margin: 0 10px;
+}
+
+.estaActivadoPalitos {
+    color: #fff !important;
+    font-size: 20px;
+    text-decoration: none !important;
+    margin: 0 10px;
+}
+
+.estaActivadoChisitos {
+    color: #fff !important;
+    font-size: 20px;
+    text-decoration: none !important;
+    margin: 0 10px;
+}
+
+.estaActivadoRefrescos {
+    color: #fff !important;
+    font-size: 20px;
+    text-decoration: none !important;
+    margin: 0 10px;
+}
+
+.estaActivadoGolosinas {
+    color: #fff !important;
+    font-size: 20px;
+    text-decoration: none !important;
+    margin: 0 10px;
+}
+
+.noActivado {
+    color: #fff !important;
+    font-size: 20px;
+    text-decoration: none !important;
+    margin: 0 10px;
+}

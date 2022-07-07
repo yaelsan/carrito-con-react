@@ -1,0 +1,26 @@
+.cardDetail {
+    max-width: 100% !important;
+}
+
+.tituloDetail {
+    font-size: 50px !important;
+}
+
+.cantidadDetail {
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.precioDetail {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.infoDetail {
+    font-size: 25px;
+    font-weight: 400;
+}
+
+.conjDetail {
+    text-align: left !important;
+}
