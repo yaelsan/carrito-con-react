@@ -24,7 +24,7 @@ const ItemsList = ({})=> {
         
       },[categoriaId])
     return (
-      <div  className="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4 "> 
+      <div  className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 "> 
         {loading ? <div className="d-flex align-items-center">
                          <strong>Loading...</strong>
                       <div className="spinner-border ms-auto" role="status" aria-hidden="true">
@@ -42,7 +42,6 @@ const ItemsList = ({})=> {
                           <p className="card-text">Cantidad: {prod.peso}</p>
                           <p className="card-text">Precio: ${prod.precio}</p>
                           <Link to={`/detail/${prod.id}`}><button type="button" className="btn btn-dark">Detalles</button></Link>
-                          
                         </div>
                     </div>
                 </div>
