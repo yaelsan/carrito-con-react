@@ -1,16 +1,40 @@
 import {useEffect, useState} from "react" 
 import { Link, useParams } from "react-router-dom"
 import { getFetch } from "../../Helpers/getFetch"
+import {collection, doc, getDoc, getDocs, getFirestore, query, where} from 'firebase/firestore'
 
 const ItemsList = ({})=> {
     const [products, setProducts] = useState([])
+    const [product, setProduct] = useState({})
     const[loading, setLoading] = useState(true)
     const {categoriaId}=useParams()
   
        
+// mostrar todos los productos
+  
+    // useEffect(()=>{
+    //   const db= getFirestore();
+    //   const queryCollection = collection (db, 'productos')
+    //   getDocs(queryCollection)
+    //   .then(resp => setProducts(resp.docs.map(prod=>({id : prod.id, ...prod.data()}))))
+    //   .catch( err=> console.log(err))
+    //   .finally(()=> setLoading(false))
+    // },[])
+    // console.log(products);
+
+    // filtrar por categoria
+    // useEffect(()=>{
+    //   const db= getFirestore();
+    //   const queryCollection = collection (db, 'productos')
+    //   const queryCollectionFilter = query (queryCollection, where('categoria','==','chisitos') )
+    //   getDocs(queryCollectionFilter)
+    //   .then(resp => setProducts(resp.docs.map(prod=>({id : prod.id, ...prod.data()}))))
+    //   .catch( err=> console.log(err))
+    //   .finally(()=> setLoading(false))
+    // },[])
   
       useEffect(()=>{
-        if (categoriaId) {
+        if (categoriaId) { 
           getFetch
       .then (resp =>setProducts(resp.filter(prod => prod.categoria === categoriaId)))
       .catch (err=> console.log(err))

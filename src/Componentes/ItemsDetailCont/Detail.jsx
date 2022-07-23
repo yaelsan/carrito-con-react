@@ -1,3 +1,4 @@
+import { doc, getDoc, getFirestore } from "firebase/firestore"
 import {useEffect, useState, useContext} from "react" 
 import { Link, useParams } from "react-router-dom"
 import { fetchDetail } from "../../Helpers/fetchDetail"
@@ -6,14 +7,13 @@ import { ItemCount } from "../Count/ItemCount"
 
 import "./detail.css"
 
-const Detail = ({})=> {
+const Detail = ({item})=> {
     const [products, setProducts] = useState([]);
     const[loading, setLoading] = useState(true);
-    const {Id}=useParams();
+    const {Id} = useParams();
     
 // usamos los context creados
-    const [cart, agregarCarrito ]= useContext(CartContext);
-    console.log(cart);
+    const [cart, agregarCarrito ,estaEnCarrito,totalCompra, cantTotalObj, eliminarProducto, vaciarCarrito ]= useContext(CartContext);
 
     const [cantidad, setCantidad]=useState();
     
@@ -21,11 +21,20 @@ const Detail = ({})=> {
     const funcionContador=(contador)=>{
       console.log("La cantidad de productos en el carrito es de :", contador);
       setCantidad(contador)
+      // const [product ]= products
       const producto = {item: products, quantity: contador}
-      agregarCarrito(producto) 
+      agregarCarrito(producto);
     }
+   
   
-       
+    //    useEffect(()=>{
+    //   const db= getFirestore();
+    //   const queryProduct = doc (db, 'productos', Id )
+    //   getDoc(queryProduct)
+    //   .then(resp => setProducts({id:resp.id, ...resp.data}))
+    //   .catch(err =>console.log(err))
+    //   .finally(()=> setLoading(false))
+    // },[Id])
   
       useEffect(()=>{
         if (Id) { 
@@ -43,7 +52,12 @@ const Detail = ({})=> {
       },[Id])
     return (
       <div className="container"> 
-        {products.map(
+        {loading ? <div className="d-flex align-items-center">
+                         <strong>Loading...</strong>
+                      <div className="spinner-border ms-auto" role="status" aria-hidden="true">
+                      </div>
+                    </div> 
+        :products.map(
           prod => 
                     <div  key={prod.id} className=" cardDetail card mb-3">
                       <div className="row g-0">

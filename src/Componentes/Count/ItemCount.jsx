@@ -5,7 +5,8 @@ export const ItemCount = ({stock, onAdd, initial}) => {
 
     const sumar=()=>{
         if (count < stock) {
-            setCount(count + 1 )
+            setCount(count + 1 );
+            
         }
     };
     const restar=()=>{
