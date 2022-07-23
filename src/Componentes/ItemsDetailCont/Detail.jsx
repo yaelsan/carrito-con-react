@@ -8,7 +8,7 @@ import { ItemCount } from "../Count/ItemCount"
 import "./detail.css"
 
 const Detail = ({item})=> {
-    const [products, setProducts] = useState([]);
+    const [product, setProduct] = useState([]);
     const[loading, setLoading] = useState(true);
     const {Id} = useParams();
     
@@ -21,35 +21,23 @@ const Detail = ({item})=> {
     const funcionContador=(contador)=>{
       console.log("La cantidad de productos en el carrito es de :", contador);
       setCantidad(contador)
-      // const [product ]= products
-      const producto = {item: products, quantity: contador}
+      const producto = {item: product, quantity: contador}
       agregarCarrito(producto);
     }
    
   
-    //    useEffect(()=>{
-    //   const db= getFirestore();
-    //   const queryProduct = doc (db, 'productos', Id )
-    //   getDoc(queryProduct)
-    //   .then(resp => setProducts({id:resp.id, ...resp.data}))
-    //   .catch(err =>console.log(err))
-    //   .finally(()=> setLoading(false))
-    // },[Id])
+    useEffect(() => {
+      const db = getFirestore();
+      const queryProduct = doc(db, 'productos', Id)
+      getDoc(queryProduct)
+      .then(resp => setProduct({ id: resp.id, ...resp.data() }))
+      .catch(err => console.log(err))
+      
+      .finally(() => setLoading(false))
+      
+      }, [Id])
   
-      useEffect(()=>{
-        if (Id) { 
-          fetchDetail
-      .then (resp =>setProducts(resp.filter(prod => prod.id === Id)))
-      .catch (err=> console.log(err))
-      .finally(()=>setLoading (false))
-        } else {
-          fetchDetail
-      .then (resp =>setProducts(resp))
-      .catch (err=> console.log(err))
-      .finally(()=>setLoading (false))
-        }
-        
-      },[Id])
+      
     return (
       <div className="container"> 
         {loading ? <div className="d-flex align-items-center">
@@ -57,26 +45,25 @@ const Detail = ({item})=> {
                       <div className="spinner-border ms-auto" role="status" aria-hidden="true">
                       </div>
                     </div> 
-        :products.map(
-          prod => 
-                    <div  key={prod.id} className=" cardDetail card mb-3">
+                      :
+                    <div  key={product.id} className=" cardDetail card mb-3">
                       <div className="row g-0">
                         <div className="col-md-4">
-                        <img src={prod.imagen} className="imgDetail card-img-top " alt="..." />
+                        <img src={product.imagen} className="imgDetail card-img-top " alt="..." />
                         </div>
                         <div className="col-md-8">
                           <div className="conjDetail card-body">
-                            <h5 className="tituloDetail card-title"><strong>{prod.nombre}</strong></h5>
-                            <p className="cantidadDetail card-text">Cantidad: {prod.peso}</p>
-                            <p className="precioDetail card-text">Precio: ${prod.precio}</p>
-                            <p className="infoDetail">Detalles : {prod.info}</p>
-                            {cantidad? <Link to="/cart"> <button>Terminar Compra</button> </Link> :<ItemCount stock={prod.stock} initial={0} onAdd={funcionContador}/>}
+                            <h5 className="tituloDetail card-title"><strong>{product.nombre}</strong></h5>
+                            <p className="cantidadDetail card-text">Cantidad: {product.peso}</p>
+                            <p className="precioDetail card-text">Precio: ${product.precio}</p>
+                            <p className="infoDetail">Detalles : {product.info}</p>
+                            {cantidad? <Link to="/cart"> <button>Terminar Compra</button> </Link> :<ItemCount stock={product.stock} initial={0} onAdd={funcionContador}/>}
                           </div>
                         </div>
                       </div>
                     </div>
                               
-        )}
+        }
       </div>
     )
   }

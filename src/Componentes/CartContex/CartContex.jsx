@@ -7,9 +7,9 @@ export const CartProvider = ({ children }) => {
   const [cart,setCart] = useState ( [] )
   console.log("el carrito ", cart);
 
-const agregarCarrito = (item) => {
-  
 
+  // agregar al carrito y verifica si esta en carrito 
+const agregarCarrito = (item) => {
   if (estaEnCarrito(item.item.id)) {
         const index = cart.findIndex(cartItem => cartItem.item.id===item.item.id)
         const {quantity}=cart[index]
@@ -23,44 +23,17 @@ const agregarCarrito = (item) => {
       setCart([...cart,item])
     }
 
+// funcion ver si esta en carrito 
  const estaEnCarrito=(id)=>{
   return cart.some((producto)=>producto.item.id===id)
  }
 
-//  const cantidadInCart=()=>{
-//   return cart.reduce((acc,prod)=> acc + prod.quantity ,0)
-//  }
-
-//  const eliminarProducto=(id)=>{
-//   setCart(cart.filter((prod)=>prod.item.id != id))
-//  }
-
-
-
-
-
-//  agregar al carrito 
- 
-
-
-  // const agregarCarrito=(item)=>{
-  //   const indexProduct =  cart.findIndex(prod=>prod.item.id===item.item.id)
-  //   if (indexProduct===-1) {
-  //     setCart([
-  //       ...cart,
-  //       item
-  //     ])
-  //   } else {
-  //     const cantVieja = cart[indexProduct].quantity
-  //     cart[indexProduct].quantity=cantVieja + item.quantity
-  //   }
-  // }
-
 
   // total de la compra
    const totalCompra=()=>{
-  return cart.reduce((acc,prod)=> acc= acc+( prod.quantity * prod.precio),0)
+  return cart.reduce((acc,prod)=> acc= acc+( prod.item.precio * prod.quantity),0)
  }
+
 
 
 // cantidad total de objetos
@@ -68,16 +41,16 @@ const agregarCarrito = (item) => {
       return cart.reduce((acc,prod)=> acc += prod.quantity ,0)
  }
 
+
 //  eliminar de un producto
  const eliminarProducto=(id)=>{
-  setCart(cart.filter( prod => prod.id !== id)) 
+  setCart(cart.filter( prod => prod.item.id !== id)) 
  }
 
  // vaciar carrito
  const vaciarCarrito=()=>{
   setCart([])
  }
-
 
 
 
@@ -89,4 +62,4 @@ const agregarCarrito = (item) => {
   )
 }
 
-// isInCart , cantidadInCart , eliminarProducto , totalCompra , vaciasCart
+

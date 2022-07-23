@@ -13,10 +13,10 @@ console.log(cart);
     
     return (
         <div>
-            <h1>Carrito</h1>
+            
             <div className="row">
                 <div className="col-md-6">
-                    <h2>Producto</h2>
+                    <h1>Carrito</h1>
                     <ul>
                         {cart.map(product => (
                             <>
@@ -24,18 +24,20 @@ console.log(cart);
                                         <img src={product.item.imagen} alt='foto de producto' className='w-25' />
                                     <span>Nombre: {product.item.nombre}</span>
                                     <span>Precio: {product.item.precio}</span>
-                                    <span> Cantidad:  {product.quantity}</span>                           
+                                    <span> Cantidad:  {product.quantity}</span>    
+                                    {/* <button onClick={()=> eliminarProducto(product.item.id)} > X </button>                        */}
                                 </li>
                             </>                            
                         ))}
                     </ul>
                 </div>
+              <h4>hola: {cantTotalObj()}</h4>
               
-                
+              <button onClick={ vaciarCarrito } >Vaciar Carrito</button>
             </div>               
             
         </div>
     )
-}
+} 
 
 export default Cart

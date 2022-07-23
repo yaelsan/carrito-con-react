@@ -1,52 +1,33 @@
 import {useEffect, useState} from "react" 
 import { Link, useParams } from "react-router-dom"
-import { getFetch } from "../../Helpers/getFetch"
-import {collection, doc, getDoc, getDocs, getFirestore, query, where} from 'firebase/firestore'
+import {collection, getDocs, getFirestore, query, where} from 'firebase/firestore'
 
 const ItemsList = ({})=> {
     const [products, setProducts] = useState([])
-    const [product, setProduct] = useState({})
     const[loading, setLoading] = useState(true)
     const {categoriaId}=useParams()
   
        
-// mostrar todos los productos
-  
-    // useEffect(()=>{
-    //   const db= getFirestore();
-    //   const queryCollection = collection (db, 'productos')
-    //   getDocs(queryCollection)
-    //   .then(resp => setProducts(resp.docs.map(prod=>({id : prod.id, ...prod.data()}))))
-    //   .catch( err=> console.log(err))
-    //   .finally(()=> setLoading(false))
-    // },[])
-    // console.log(products);
+// mostrar todos los productos desde firebase
 
-    // filtrar por categoria
-    // useEffect(()=>{
-    //   const db= getFirestore();
-    //   const queryCollection = collection (db, 'productos')
-    //   const queryCollectionFilter = query (queryCollection, where('categoria','==','chisitos') )
-    //   getDocs(queryCollectionFilter)
-    //   .then(resp => setProducts(resp.docs.map(prod=>({id : prod.id, ...prod.data()}))))
-    //   .catch( err=> console.log(err))
-    //   .finally(()=> setLoading(false))
-    // },[])
-  
-      useEffect(()=>{
-        if (categoriaId) { 
-          getFetch
-      .then (resp =>setProducts(resp.filter(prod => prod.categoria === categoriaId)))
-      .catch (err=> console.log(err))
-      .finally(()=>setLoading (false))
-        } else {
-          getFetch
-      .then (resp =>setProducts(resp))
-      .catch (err=> console.log(err))
-      .finally(()=>setLoading (false))
+    useEffect(() => {
+        const db = getFirestore()
+        if (categoriaId) {
+            const queryCollection = collection(db, 'productos')
+            const queryCollectionFilter = query(queryCollection, where('categoria', '==', categoriaId))
+            getDocs(queryCollectionFilter)
+            .then(resp => setProducts( resp.docs.map(prod => ( { id: prod.id, ...prod.data() } ) ) ) )
+            .catch( err => console.log(err) )
+            .finally(()=> setLoading(false))             
+        } else {           
+            const queryCollection = collection(db, 'productos')
+            getDocs(queryCollection)
+            .then(resp => setProducts( resp.docs.map(prod => ( { id: prod.id, ...prod.data() } ) ) ) )
+            .catch( err => console.log(err) )
+            .finally(()=> setLoading(false))         
         }
-        
-      },[categoriaId])
+    }, [ categoriaId ])
+    
     return (
       <div  className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 "> 
         {loading ? <div className="d-flex align-items-center">
@@ -56,8 +37,6 @@ const ItemsList = ({})=> {
                     </div> 
         :products.map(
           prod => 
-          
-            
                 <div  key={prod.id} className="col">
                     <div className="card h-100  ">
                        <img src={prod.imagen} className="card-img-top " alt="..." height="320px" width="300px" />
