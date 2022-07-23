@@ -37,8 +37,8 @@ const agregarCarrito = (item) => {
 
 
 // cantidad total de objetos
-  const cantTotalObj=()=>{
-      return cart.reduce((acc,prod)=> acc += prod.quantity ,0)
+  const cantTotal=()=>{
+      return cart.reduce((acc,prod)=> acc += prod.quantity , 0)
  }
 
 
@@ -56,7 +56,7 @@ const agregarCarrito = (item) => {
 
   return (
           <CartContext.Provider value={[
-           cart,agregarCarrito ,estaEnCarrito,totalCompra,cantTotalObj,eliminarProducto,vaciarCarrito]}> 
+           cart,agregarCarrito ,estaEnCarrito,eliminarProducto,totalCompra,vaciarCarrito,cantTotal,]}> 
             {children} 
           </CartContext.Provider>
   )

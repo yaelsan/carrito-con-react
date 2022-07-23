@@ -1,9 +1,13 @@
 import CartWidget from '../IconCart/CartWidget'
-import React from 'react'
+import React, { useContext } from 'react'
 import "./Nav.css"
 import { Link, NavLink } from 'react-router-dom'
+import { CartContext } from '../CartContex/CartContex';
 
 function NavBar() {
+
+  const [cart,agregarCarrito ,estaEnCarrito,eliminarProducto,totalCompra,vaciarCarrito,cantTotal ]= useContext(CartContext);
+
   return (
     <nav className="navbar navbar-expand-lg bg-dark border-bottom border-warning">
   <div className="container-fluid">
@@ -33,7 +37,10 @@ function NavBar() {
         <NavLink to="/categoria/golosinas" className={({isActive})=> isActive ? "estaActivado" : "noActivado"} > Golosinas </NavLink>
         </li>
       </ul>
-     <Link to="/cart"><CartWidget/></Link>
+     <Link to="/cart">
+     { cantTotal() !== 0 && cantTotal() }
+        <CartWidget/>
+      </Link>
       
     </div>
   </div>
