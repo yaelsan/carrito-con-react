@@ -1,0 +1,84 @@
+
+
+.tituloCarrito{
+    font-size: 34px;
+    text-align: center;
+    color: #fff;
+}
+
+.tablaTotales{
+    color: #fff;
+}
+
+.imgTotales{
+    width: 100px;
+    height: 100px;
+    border-radius: 5px  ; 
+}
+
+.precioCarrito{
+    color: #fff;
+}
+.cantidadCarrito{
+    color: #fff;
+}
+.detallesTotales{
+    padding: 0 30px;
+}
+.nomrbeTotales{
+    font-size: 20px;
+    font-weight: 400;
+    color: #F8B400;
+}
+.titutoTodo{
+    margin-top: 100px;
+}
+.tituloCarrito2{
+    text-align: center;
+    color: #fff;
+}
+.tituloCarrito3{
+    text-align: center;
+    color: #fff;
+}
+
+.totalesFinal{
+    color: #fff;
+    font-size: 20px;
+}
+
+.colorPuro{
+    font-size: 42px;
+    font-weight: 700;
+}
+
+.botonHome{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    text-decoration: none;
+}
+.botonHome2{
+    border-radius: 10px;
+    background:  linear-gradient(90deg,#ff0099  0%,#38b6ff );
+    margin-bottom: 60px;
+    font-weight: 600;
+    font-size: 22px;
+}
+.botonVaciar{
+    border-radius: 10px;
+    background:  linear-gradient(90deg,#ff0099  0%,#38b6ff );
+    margin-bottom: 60px;
+    font-weight: 600;
+    font-size: 22px;
+    margin-left: 10px;
+}
+
+
+@media screen and (max-width: 820px){
+    .imgTotales{
+    width: 60px;
+    height: 60px;
+    border-radius: 5px  ;
+    }
+}

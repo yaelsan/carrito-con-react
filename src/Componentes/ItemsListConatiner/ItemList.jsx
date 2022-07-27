@@ -1,12 +1,13 @@
 import {useEffect, useState} from "react" 
 import { Link, useParams } from "react-router-dom"
 import {collection, getDocs, getFirestore, query, where} from 'firebase/firestore'
+import "./ItemList.css"
 
 const ItemsList = ({})=> {
     const [products, setProducts] = useState([])
     const[loading, setLoading] = useState(true)
     const {categoriaId}=useParams()
-  
+   
        
 // mostrar todos los productos desde firebase
 
@@ -39,12 +40,14 @@ const ItemsList = ({})=> {
           prod => 
                 <div  key={prod.id} className="col">
                     <div className="card h-100  ">
-                       <img src={prod.imagen} className="card-img-top " alt="..." height="320px" width="300px" />
+                      <div className="imgList">
+                      <img src={prod.imagen} className="card-img-top " alt="..." height="300px" width="auto " />
+                      </div>
                         <div className="card-body">
                           <h5 className="card-title"><strong><u>{prod.nombre}</u></strong></h5>
-                          <p className="card-text">Cantidad: {prod.peso}</p>
-                          <p className="card-text">Precio: ${prod.precio}</p>
-                          <Link to={`/detail/${prod.id}`}><button type="button" className="btn btn-dark">Detalles</button></Link>
+                          <p className="card-text pesoLista">Cantidad: {prod.peso}</p>
+                          <p className="card-text precioLista">${prod.precio}</p>
+                          <Link to={`/detail/${prod.id}`}><button type="button" className="btn btn-dark botonDetalles">Detalles</button></Link>
                         </div>
                     </div>
                 </div>

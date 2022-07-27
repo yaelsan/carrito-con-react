@@ -6,7 +6,7 @@ import { CartContext } from '../CartContex/CartContex';
 
 function NavBar() {
 
-  const [cart,agregarCarrito ,estaEnCarrito,eliminarProducto,totalCompra,vaciarCarrito,cantTotal ]= useContext(CartContext);
+ 
 
   return (
     <nav className="navbar navbar-expand-lg bg-dark border-bottom border-warning">
@@ -38,7 +38,6 @@ function NavBar() {
         </li>
       </ul>
      <Link to="/cart">
-     { cantTotal() !== 0 && cantTotal() }
         <CartWidget/>
       </Link>
       

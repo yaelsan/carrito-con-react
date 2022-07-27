@@ -1,26 +1,55 @@
-.cardDetail {
-    max-width: 100% !important;
+/* todo los css de detalles  */
+.card{
+    background-color: #191919 !important;
+}
+.cardDetail{
+    max-width: auto !important;
+    height:auto !important;
+    border: 1px solid  !important;
+    border-radius: 15px !important;
 }
 
-.tituloDetail {
-    font-size: 50px !important;
+.imgDetail :hover{
+    -webkit-transform: scale(1.2, 1.2);
+    -moz-transform: scale(1.2, 1.2);
+    -ms-transform: scale(1.2, 1.2);
+    transform: scale(1.2, 1.2);
+}
+.imgDetail{
+    margin: 20px !important;
 }
 
-.cantidadDetail {
-    font-size: 30px;
-    font-weight: 500;
+.imgDetail2{
+    height: 400px;
+    width: 100%;
 }
 
-.precioDetail {
-    font-size: 30px;
-    font-weight: 600;
+.restDetail{
+    max-width: 740px;
+    margin: 10px 20px;
+}
+.card-title{
+    color: #F8B400 !important;
+    font-size: 28px;
+    font-weight: 700;
+}
+.descripcion{
+    color: #fff;
+    max-width: 500px;
+}
+.precioDetail{
+    color: #F8B400;
+    font-size: 22px;
 }
 
-.infoDetail {
-    font-size: 25px;
-    font-weight: 400;
+@media screen and (max-width: 820px){
+    .imgDetail{
+        margin: 0 !important;
+    }
 }
 
-.conjDetail {
-    text-align: left !important;
-}
+
+
+
+
+

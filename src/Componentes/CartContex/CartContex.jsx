@@ -5,7 +5,7 @@ export const  CartContext= createContext({});
 
 export const CartProvider = ({ children }) => {
   const [cart,setCart] = useState ( [] )
-  console.log("el carrito ", cart);
+  // console.log("el carrito ", cart);
 
 
   // agregar al carrito y verifica si esta en carrito 
@@ -54,9 +54,10 @@ const agregarCarrito = (item) => {
 
 
 
+
   return (
           <CartContext.Provider value={[
-           cart,agregarCarrito ,estaEnCarrito,eliminarProducto,totalCompra,vaciarCarrito,cantTotal,]}> 
+           cart,agregarCarrito ,estaEnCarrito,eliminarProducto,totalCompra,vaciarCarrito,cantTotal]}> 
             {children} 
           </CartContext.Provider>
   )

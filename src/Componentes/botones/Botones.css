@@ -1,0 +1,55 @@
+.botonFooter{
+    color: #090909;
+    padding: 0.7em 1.7em;
+    font-size: 18px;
+    border-radius: 0.5em;
+    background: #e8e8e8;
+    border: 1px solid #e8e8e8;
+    transition: all .3s;
+    box-shadow: 6px 6px 12px #ff0099,  -6px -6px 12px #ff0099;
+    margin: 20px;
+    text-decoration: none;
+}
+
+.botonFooter:hover{
+    box-shadow: -6px -6px 12px #ff0099,6px 6px 12px #ff0099 ;
+}
+
+
+.botonFooter2{
+    color: #090909;
+    padding: 0.7em 1.7em;
+    font-size: 18px;
+    border-radius: 0.5em;
+    background: #e8e8e8;
+    border: 1px solid #e8e8e8;
+    transition: all .3s;
+    box-shadow: 6px 6px 12px #38b6ff,  -6px -6px 12px #38b6ff;
+    margin: 20px;
+    text-decoration: none;
+}
+
+.botonFooter2:hover{
+    box-shadow: -6px -6px 12px #38b6ff,6px 6px 12px #38b6ff ;
+}
+
+
+
+.btnSumarRestar{
+    width: 30px;
+    height: 30px;
+    margin:0 6px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    color: black;
+    background:  linear-gradient(90deg,#ff0099  0%,#38b6ff );
+    
+}
+
+.numeroContador{
+    color: #fff;
+}
+.botonDetalles{
+    margin-top: 20px !important;
+    background:  linear-gradient(90deg,#ff0099  0%,#38b6ff ) !important;
+}
