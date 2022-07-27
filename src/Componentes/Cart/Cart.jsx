@@ -32,15 +32,7 @@ const Cart = () => {
                             
                         </div>
                         {cart.map(product => (
-                            <>
-                                {/* <li key={product.item.id}>
-                                        <img src={product.item.imagen} alt='foto de producto' className='w-25' />
-                                    <span>Nombre: {product.item.nombre}</span>
-                                    <span>Precio: {product.item.precio}</span>
-                                    <span> Cantidad:  {product.quantity}</span>    
-                                    <button onClick={()=> eliminarProducto(product.item.id)} > X </button>                       
-                                </li> */}
-
+                            
                         <div id="carrito" className="table-responsive container">
                             
                             <table className="table" id="lista-compra">
@@ -57,7 +49,7 @@ const Cart = () => {
                             </table>
                             
                         </div>
-                            </>                               
+                                                       
                         ))}
                             <tr>
                                 <th colspan="4" scope="col" className="text-right">
