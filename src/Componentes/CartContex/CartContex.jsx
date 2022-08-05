@@ -13,7 +13,7 @@ const agregarCarrito = (item) => {
   if (estaEnCarrito(item.item.id)) {
         const index = cart.findIndex(cartItem => cartItem.item.id===item.item.id)
         const {quantity}=cart[index]
-        item.quantity += quantity
+        item.quantity += quantity 
        
         const newCart = cart.splice(index, 1)
         setCart([...newCart, item])
@@ -51,6 +51,8 @@ const agregarCarrito = (item) => {
  const vaciarCarrito=()=>{
   setCart([])
  }
+
+
 
 
 

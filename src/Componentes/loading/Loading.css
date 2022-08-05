@@ -1,0 +1,16 @@
+
+.loadinComplet{
+    align-items: center;
+    margin: 35%;
+
+}
+
+.loading{
+    font-size: 40px;
+    color: aliceblue;
+}
+
+.loadingRol{
+    color: darkgoldenrod;
+    font-size: 40px;
+}

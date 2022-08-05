@@ -2,7 +2,7 @@ import "./Botones.css"
 
 const BotonRestar = () => {
   return (
-    <button className='btnSumarRestar'> -</button>
+    <button className='btnSumarRestar'>-</button>
   )
 }
 

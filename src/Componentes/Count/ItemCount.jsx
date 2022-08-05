@@ -9,7 +9,7 @@ export const ItemCount = ({stock, onAdd, initial}) => {
         if (count < stock) {
             setCount(count + 1 );
         }
-    };
+    }; 
     const restar=()=>{
         if (count > initial) {
             setCount(count - 1 )
@@ -19,12 +19,12 @@ export const ItemCount = ({stock, onAdd, initial}) => {
 
   return (
     <>
-         <div>
-        <span onClick={sumar}><BotonSumar/></span> 
-        <span className="numeroContador"> {count} </span>
-        <span onClick={restar}>< BotonRestar/></span>
+        <div>
+           <span onClick={sumar}><BotonSumar/></span> 
+           <span className="numeroContador"> {count} </span>
+           <span onClick={restar}>< BotonRestar/></span>
         </div>
-        <button type="button" className="btn btn-dark botonDetalles" disabled={count === 0 } onClick={()=>onAdd(count)}>Agregar Carrito</button>
+        <button type="button" className="btn btn-dark botonDetalles" disabled={stock === 0 } onClick={()=>onAdd(count)}>Agregar Carrito</button>
     </>
   )
 } 

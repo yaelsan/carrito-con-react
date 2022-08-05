@@ -74,6 +74,12 @@
     margin-left: 10px;
 }
 
+.idOrder{
+    font-size: 24px;
+    font-weight: 600;
+    color: #F8B400;
+}
+
 
 @media screen and (max-width: 820px){
     .imgTotales{
