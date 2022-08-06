@@ -21,7 +21,6 @@ const Detail = ({item})=> {
     
 // funcion para el contador 
     const funcionContador=(contador)=>{
-      // console.log("La cantidad de productos en el carrito es de :", contador);
       setCantidad(contador)
       const producto = {item: product, quantity: contador}
       agregarCarrito(producto);

@@ -1,0 +1,15 @@
+
+
+.formPagos{
+    margin: auto;
+    margin-bottom: 60px;
+    max-width: 90%;
+}
+.titulasoPago{
+    color: #fff;
+}
+.detallesCampo{
+    color: #fff;
+    font-size: 18px;
+    font-weight: 400;
+}

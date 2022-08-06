@@ -68,3 +68,12 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+| Plugin           | README                                       |
+| ---------------- | -------------------------------------------- |
+| Dropbox          | [plugins/dropbox/README.md][pldb]            |
+| GitHub           | https://github.com/yaelsan/carrito-con-react |
+| Google Drive     | [plugins/googledrive/README.md][plgd]        |
+| OneDrive         | [plugins/onedrive/README.md][plod]           |
+| Medium           | [plugins/medium/README.md][plme]             |
+| Google Analytics | [plugins/googleanalytics/README.md][plga]    |

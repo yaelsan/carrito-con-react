@@ -16,21 +16,14 @@ const Item = ({})=> {
 
     useEffect(() => {
         const db = getFirestore()
-        if (categoriaId) {
-            const queryCollection = collection(db, 'productos')
-            const queryCollectionFilter = query(queryCollection, where('categoria', '==', categoriaId))
-            getDocs(queryCollectionFilter)
-            .then(resp => setProducts( resp.docs.map(prod => ( { id: prod.id, ...prod.data() } ) ) ) )
-            .catch( err => console.log(err) )
-            .finally(()=> setLoading(false))             
-        } else {           
-            const queryCollection = collection(db, 'productos')
-            getDocs(queryCollection)
-            .then(resp => setProducts( resp.docs.map(prod => ( { id: prod.id, ...prod.data() } ) ) ) )
-            .catch( err => console.log(err) )
-            .finally(()=> setLoading(false))         
-        }
-    }, [ categoriaId ])
+        const queryCollection = collection(db, 'productos')
+        const queryCollectionFilter = categoriaId ? query(queryCollection, where('categoria', '==', categoriaId)) : queryCollection
+        getDocs(queryCollectionFilter)
+        .then(resp => setProducts( resp.docs.map(prod => ( { id: prod.id, ...prod.data() } ) ) ) )
+        .catch( err => console.log(err) )
+        .finally(()=> setLoading(false))
+        },
+     [ categoriaId ])
     
     return (
       <div  className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 "> 

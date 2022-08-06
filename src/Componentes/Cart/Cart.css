@@ -80,6 +80,12 @@
     color: #F8B400;
 }
 
+.detallesCampo{
+ color: #fff;
+}
+.titulasoPago{
+    color: #fff;
+}
 
 @media screen and (max-width: 820px){
     .imgTotales{

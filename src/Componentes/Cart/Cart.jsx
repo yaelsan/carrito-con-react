@@ -3,16 +3,22 @@ import { CartContext } from "../CartContex/CartContex"
 import { Link } from "react-router-dom"
 import "./Cart.css"
 import CartItem from "./CartItem"
-import {addDoc, collection, documentId, getDoc, getDocs, getFirestore, query, where, writeBatch,} from 'firebase/firestore'
+import {addDoc, collection, documentId, getDocs, getFirestore, query, where, writeBatch,} from 'firebase/firestore'
+import Form from "../form/Form"
+
 
 const Cart = () => {
 
-  const [id, setId] = useState()
-  const [cart,agregarCarrito ,estaEnCarrito,eliminarProducto,totalCompra,vaciarCarrito,cantTotal]= useContext(CartContext);
+    const [dataForm, setDataForm] = useState({email: '', name: '', phone: ''})
+    const [id, setId] = useState()
+    const [cart,agregarCarrito ,estaEnCarrito,eliminarProducto,totalCompra,vaciarCarrito,cantTotal]= useContext(CartContext);
 // generar order
-  const sendOrder= async ()=>{
-    const order={}
-    order.buyer= {name: "Yael" ,phone: "123123", email:"y@gmail.com"}
+  const sendOrder= async (e)=>{
+    e.preventDefault();
+
+    let order={}
+
+    order.buyer= dataForm
     order.items=cart.map(prod=>{
         const id = prod.item.id
         const precio = prod.item.precio
@@ -25,7 +31,7 @@ const Cart = () => {
         order.total= totalCompra()
         console.log(order);
 
-//         // insertar order
+        // insertar order
 
         const db = getFirestore()
         const queryIsertCollection= collection (db,'orders')
@@ -50,14 +56,79 @@ const Cart = () => {
         .finally(()=> alert('Su Compra fue realizada con exito !! '))
         batch.commit()
 
+}
 
+const handleChange=(e)=>{
+    setDataForm({
+        ...dataForm,
+        [e.target.name] : e.target.value
+    })
 }
     return (
         !cart.length == 0?
         <div className="container">
+            <main className="formPagos">
+        <div className="container">
+            <div className="row mt-3">
+                <div className="col ">
+                    <h2 className="titulasoPago d-flex justify-content-center mb-3">Realizar Compra</h2>
+                    <form id="procesar-pago" action="#">
+                        <div className="form-group row">
+                            <label  className="col-12 col-md-2  col-form-label detallesCampo">Nombre y Apellido :</label>
+                            <div className="col-12 col-md-10">
+                              <input 
+                              type='text' 
+                              name='name' 
+                              placeholder='Ingresa tu Nombre y Apellido' 
+                              value={dataForm.name}
+                              onChange={handleChange}
+                              className="form-control" 
+                              />
+                            </div>
+                        </div>
+                        <div className="form-group row">
+                            <label className="col-12 col-md-2 col-form-label detallesCampo">Correo :</label>
+                            <div className="col-12 col-md-10">
+                            <input 
+                            type='email' 
+                            name='email'
+                            placeholder='Ingresa tu Email' 
+                            value={dataForm.email}
+                            onChange={handleChange}
+                            className="form-control" />
+                            </div>
+                        </div>
+                        <div className="form-group row">
+                            <label  className="col-12 col-md-2 col-form-label detallesCampo">Validar Correo :</label>
+                            <div className="col-12 col-md-10">
+                            <input 
+                            type='email' 
+                            name='validateEmail'
+                            placeholder='Validar el Email' 
+                            value={dataForm.validateEmail}
+                            onChange={handleChange}
+                            className="form-control" />
+                            </div>
+                        </div>
+                        <div className="form-group row">
+                            <label className="col-12 col-md-2 col-form-label detallesCampo">Telefono :</label>
+                            <div className="col-12 col-md-10">
+                            <input 
+                            type='number' 
+                            name='phone'
+                            placeholder='Ingresa tu Numero de Telefono' 
+                            value={dataForm.phone}
+                            onChange={handleChange}
+                            className="form-control" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
             <div className="row">
                 <div className="col-md-12">
-                    <h1 className="tituloCarrito">Carrito</h1>
                     <div id="carrito" className="table-responsive container">
                         <table className="table" id="lista-compra">
                             <thead className="tablaTotales">
