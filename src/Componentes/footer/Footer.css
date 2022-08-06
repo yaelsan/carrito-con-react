@@ -1,0 +1,16 @@
+.dFooter{
+    border-top: 1px solid rgba(227, 152, 13, 0.804) ;
+    border-bottom: 1px solid rgba(227, 152, 13, 0.804) ;
+}
+
+.footerLink{
+    color: rgba(227, 152, 13, 0.804) ;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.aFooter{
+    color: #fff;
+    font-size: 20px;
+}
+  

@@ -12,6 +12,7 @@ import Cart from "./componentes/Cart/Cart";
 import Fallo from "./componentes/404/Fallo";
 import NavLogo from "./componentes/Nav/NavLogo";
 import { CartProvider } from "./componentes/CartContex/CartContex";
+import Footer from "./componentes/footer/Footer";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
       <Route path="/error" element={ <Fallo/>}/>
       <Route path="*" element={ <Navigate to="/error"/>  }/>
     </Routes>
+    <Footer/>
   </div>
   </BrowserRouter>
 </CartProvider>

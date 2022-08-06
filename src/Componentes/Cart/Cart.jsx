@@ -4,18 +4,27 @@ import { Link } from "react-router-dom"
 import "./Cart.css"
 import CartItem from "./CartItem"
 import {addDoc, collection, documentId, getDocs, getFirestore, query, where, writeBatch,} from 'firebase/firestore'
-import Form from "../form/Form"
+import { Alert } from "bootstrap"
+import Swal from "sweetalert2"
 
 
 const Cart = () => {
 
-    const [dataForm, setDataForm] = useState({email: '', name: '', phone: ''})
+    const [dataForm, setDataForm] = useState({email: '',validateEmail:'', name: '', phone: ''})
     const [id, setId] = useState()
     const [cart,agregarCarrito ,estaEnCarrito,eliminarProducto,totalCompra,vaciarCarrito,cantTotal]= useContext(CartContext);
 // generar order
   const sendOrder= async (e)=>{
     e.preventDefault();
-
+    
+    
+if (dataForm.email === "" || dataForm.name === "" || dataForm.phone === "" || dataForm.validateEmail === "" || dataForm.validateEmail !== dataForm.email ) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Algunos campos estan incompletos o incorrectos!'
+          })
+} else {
     let order={}
 
     order.buyer= dataForm
@@ -53,10 +62,20 @@ const Cart = () => {
         .then(resp=>resp.docs.forEach(res=>batch.update(res.ref,{
             stock: res.data().stock - cart.find(item=>item.item.id===res.id).quantity
         })) )
-        .finally(()=> alert('Su Compra fue realizada con exito !! '))
+        .finally(()=> Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Su Compra Fue Realizada con exito !!',
+            showConfirmButton: false,
+            timer: 2000
+          }))
         batch.commit()
 
 }
+
+}
+
+  
 
 const handleChange=(e)=>{
     setDataForm({
@@ -71,7 +90,7 @@ const handleChange=(e)=>{
         <div className="container">
             <div className="row mt-3">
                 <div className="col ">
-                    <h2 className="titulasoPago d-flex justify-content-center mb-3">Realizar Compra</h2>
+                    <h2 className="titulasoPago d-flex justify-content-center mb-3 ">Realizar Compra</h2>
                     <form id="procesar-pago" action="#">
                         <div className="form-group row">
                             <label  className="col-12 col-md-2  col-form-label detallesCampo">Nombre y Apellido :</label>
@@ -157,7 +176,7 @@ const handleChange=(e)=>{
                         </div>
                 </div>
                         <div>
-                           <span><button className="botonVaciar" onClick={ sendOrder } >Genrar Pago</button></span>
+                           <span><button className="botonVaciar" onClick={ sendOrder } >Generar Pago</button></span>
                            <span><button className="botonVaciar" onClick={ vaciarCarrito } >Vaciar Carrito</button></span>
                         </div>
                 

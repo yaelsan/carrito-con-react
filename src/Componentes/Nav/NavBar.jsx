@@ -21,7 +21,7 @@ function NavBar() {
             <NavLink to="/categoria/palitos" className={({isActive})=> isActive ? "estaActivado" : "noActivado"} > Palitos Salados </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink to="/categoria/chisitos" className={({isActive})=> isActive ? "estaActivado" : "noActivado"} > Chisitos </NavLink>
+            <NavLink to="/categoria/chisitos" className={({isActive})=> isActive ? "estaActivado" : "noActivado"} > Chizitos </NavLink>
           </li>
           <li className="nav-item">
             <NavLink to="/categoria/gaseosas" className={({isActive})=> isActive ? "estaActivado" : "noActivado"} > Refrescos </NavLink>
@@ -31,15 +31,16 @@ function NavBar() {
           </li>
         </ul>
         <Link to="/cart">
-        <CartWidget/>
+        <CartWidget/> 
         </Link>
       </div>
-    </div>
+    </div> 
   </nav>
   )
 }
 
 export default NavBar
+
 
 
 

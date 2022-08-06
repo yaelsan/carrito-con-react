@@ -3,7 +3,7 @@ import { CartContext } from '../CartContex/CartContex';
 import './CartWidget.css'
 
 export default function CartWidget() {
-  const [cart,agregarCarrito ,estaEnCarrito,eliminarProducto,totalCompra,vaciarCarrito,cantTotal ]= useContext(CartContext);
+  const [cart ,agregarCarrito ,estaEnCarrito,eliminarProducto,totalCompra,vaciarCarrito,cantTotal]= useContext(CartContext);
   return (
     
      !cart.length == 0?
