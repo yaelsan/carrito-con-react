@@ -37,7 +37,6 @@ if (dataForm.email === "" || dataForm.name === "" || dataForm.phone === "" || da
         
         })
         order.total= totalBuy()
-        console.log(order);
 
         // insertar order
 
@@ -66,7 +65,7 @@ if (dataForm.email === "" || dataForm.name === "" || dataForm.phone === "" || da
             icon: 'success',
             title: 'Su Compra Fue Realizada con exito !!',
             showConfirmButton: false,
-            timer: 2000
+            timer: 2500
           }))
         batch.commit()
 
@@ -185,11 +184,10 @@ const handleChange=(e)=>{
         :
         
         <div className="titutoTodo">
-            <h1 className="tituloCarrito2">Su carrito esta vacio !! </h1>
+            { id && <div className="tituloCarrito3">"Muchas Gracias por su compra" <br /> Numero de pedido :  <span className="idOrder">{id}</span></div>  }
+            <h1 className="tituloCarrito2">¡ Su carrito esta vacio ! </h1>
             <h2 className="tituloCarrito2">Conoce muchos mas Productos de <span className="colorPuro">Puro Monchis</span>  </h2>
-            { id && <div className="tituloCarrito2">Su numero de pedido <span className="idOrder">{id}</span> fue realiazo con exito!!  </div>  }
             <Link to="/" className="botonHome"><button className="botonHome2">Realizar otra Compra</button></Link>
-
         </div>
     )
 } 

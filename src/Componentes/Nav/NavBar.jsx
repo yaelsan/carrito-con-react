@@ -24,7 +24,7 @@ function NavBar() {
             <NavLink to="/categoria/chisitos" className={({isActive})=> isActive ? "estaActivado" : "noActivado"} > Chizitos </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink to="/categoria/gaseosas" className={({isActive})=> isActive ? "estaActivado" : "noActivado"} > Refrescos </NavLink>
+            <NavLink to="/categoria/gaseosas" className={({isActive})=> isActive ? "estaActivado" : "noActivado"} > Bebidas </NavLink>
           </li>
           <li className="nav-item">
             <NavLink to="/categoria/golosinas" className={({isActive})=> isActive ? "estaActivado" : "noActivado"} > Golosinas </NavLink>
