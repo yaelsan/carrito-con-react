@@ -4,7 +4,6 @@ import { Link } from "react-router-dom"
 import "./Cart.css"
 import CartItem from "./CartItem"
 import {addDoc, collection, documentId, getDocs, getFirestore, query, where, writeBatch,} from 'firebase/firestore'
-import { Alert } from "bootstrap"
 import Swal from "sweetalert2"
 
 
@@ -12,7 +11,7 @@ const Cart = () => {
 
     const [dataForm, setDataForm] = useState({email: '',validateEmail:'', name: '', phone: ''})
     const [id, setId] = useState()
-    const [cart,agregarCarrito ,estaEnCarrito,eliminarProducto,totalCompra,vaciarCarrito,cantTotal]= useContext(CartContext);
+    const [cart,addToCart ,isInCart,deletProduct,totalBuy,emptyCart,quantityTtotal]= useContext(CartContext);
 // generar order
   const sendOrder= async (e)=>{
     e.preventDefault();
@@ -37,7 +36,7 @@ if (dataForm.email === "" || dataForm.name === "" || dataForm.phone === "" || da
         return {id,precio,nombre,cantidad}
         
         })
-        order.total= totalCompra()
+        order.total= totalBuy()
         console.log(order);
 
         // insertar order
@@ -47,7 +46,7 @@ if (dataForm.email === "" || dataForm.name === "" || dataForm.phone === "" || da
         addDoc(queryIsertCollection , order)
         .then(resp=> setId (resp.id))
         .catch(err=>console.log(err))
-        .finally( () => vaciarCarrito() )
+        .finally( () => emptyCart() )
 
         const queryCollectionStock = collection (db, 'productos')
 
@@ -133,7 +132,7 @@ const handleChange=(e)=>{
                             <label className="col-12 col-md-2 col-form-label detallesCampo">Telefono :</label>
                             <div className="col-12 col-md-10">
                             <input 
-                            type='number' 
+                            type='tel' 
                             name='phone'
                             placeholder='Ingresa tu Numero de Telefono' 
                             value={dataForm.phone}
@@ -169,7 +168,7 @@ const handleChange=(e)=>{
                             <tr>
                                 <th colSpan="4" scope="col" className="text-right">
                                     <th scope="col">
-                                        <p className="totalesFinal">{ totalCompra() !== 0 && `PRECIO TOTAL: $ ${totalCompra()}` }</p>
+                                        <p className="totalesFinal">{ totalBuy() !== 0 && `TOTAL A PAGAR: $${totalBuy()}` }</p>
                                     </th>
                                 </th>
                             </tr>
@@ -177,7 +176,7 @@ const handleChange=(e)=>{
                 </div>
                         <div>
                            <span><button className="botonVaciar" onClick={ sendOrder } >Generar Pago</button></span>
-                           <span><button className="botonVaciar" onClick={ vaciarCarrito } >Vaciar Carrito</button></span>
+                           <span><button className="botonVaciar" onClick={ emptyCart } >Vaciar Carrito</button></span>
                         </div>
                 
             </div>               

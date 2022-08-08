@@ -3,7 +3,7 @@ import { CartContext } from '../CartContex/CartContex';
 import './CartWidget.css'
 
 export default function CartWidget() {
-  const [cart ,agregarCarrito ,estaEnCarrito,eliminarProducto,totalCompra,vaciarCarrito,cantTotal]= useContext(CartContext);
+  const [cart,addToCart ,isInCart,deletProduct,totalBuy,emptyCart,quantityTtotal]= useContext(CartContext);
   return (
     
      !cart.length == 0?
@@ -12,7 +12,7 @@ export default function CartWidget() {
       <li  className="numerito">
         <img src="../img/logo-cart.png" alt="cart-logo" width="120px"/>
       </li>
-      <p className='totalArticulos'>{ cantTotal() !== 0 && cantTotal() }</p>
+      <p className='totalArticulos'>{ quantityTtotal() !== 0 && quantityTtotal() }</p>
     </ul>
     </>
     :

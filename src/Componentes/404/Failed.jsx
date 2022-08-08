@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Fallo = () => {
+const Failed = () => {
   return (
     <div>
       <h1>EROR 404</h1>
@@ -9,4 +9,4 @@ const Fallo = () => {
   )
 }
 
-export default Fallo
+export default Failed

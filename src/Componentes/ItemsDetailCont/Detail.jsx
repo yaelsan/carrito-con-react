@@ -6,7 +6,6 @@ import BotonSeguirComprando from "../botones/BotonSeguirComprando"
 import { CartContext } from "../CartContex/CartContex"
 import { ItemCount } from "../Count/ItemCount"
 import Loading from "../loading/Loading"
-
 import "./detail.css"
 
 const Detail = ({item})=> {
@@ -15,7 +14,7 @@ const Detail = ({item})=> {
     const {Id} = useParams();
     
 // usamos los context creados
-    const [cart, agregarCarrito ,estaEnCarrito,totalCompra, cantTotalObj, eliminarProducto, vaciarCarrito ]= useContext(CartContext);
+    const [cart,addToCart ,isInCart,deletProduct,totalBuy,emptyCart,quantityTtotal ]= useContext(CartContext);
 
     const [cantidad, setCantidad]=useState();
     
@@ -23,7 +22,7 @@ const Detail = ({item})=> {
     const funcionContador=(contador)=>{
       setCantidad(contador)
       const producto = {item: product, quantity: contador}
-      agregarCarrito(producto);
+      addToCart(producto);
     }
    
   

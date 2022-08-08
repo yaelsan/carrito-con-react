@@ -8,8 +8,8 @@ export const CartProvider = ({ children }) => {
 
 
   // agregar al carrito y verifica si esta en carrito 
-const agregarCarrito = (item) => {
-  if (estaEnCarrito(item.item.id)) {
+const addToCart = (item) => {
+  if (isInCart(item.item.id)) {
         const index = cart.findIndex(cartItem => cartItem.item.id===item.item.id)
         const {quantity}=cart[index]
         item.quantity += quantity 
@@ -23,31 +23,31 @@ const agregarCarrito = (item) => {
     }
 
 // funcion ver si esta en carrito 
-  const estaEnCarrito=(id)=>{
+  const isInCart=(id)=>{
     return cart.some((producto)=>producto.item.id===id)
   }
 
 
   // total de la compra
-  const totalCompra=()=>{
+  const totalBuy=()=>{
     return cart.reduce((acc,prod)=> acc= acc+( prod.item.precio * prod.quantity),0)
   }
 
 
 
 // cantidad total de objetos
-  const cantTotal=()=>{
+  const quantityTtotal=()=>{
     return cart.reduce((acc,prod)=> acc += prod.quantity , 0)
   }
 
 
 //  eliminar de un producto
-  const eliminarProducto=(id)=>{
+  const deletProduct=(id)=>{
     setCart(cart.filter( prod => prod.item.id !== id)) 
   }
 
  // vaciar carrito
-  const vaciarCarrito=()=>{
+  const emptyCart=()=>{
     setCart([])
   }
 
@@ -58,7 +58,7 @@ const agregarCarrito = (item) => {
 
   return (
           <CartContext.Provider value={[
-           cart,agregarCarrito ,estaEnCarrito,eliminarProducto,totalCompra,vaciarCarrito,cantTotal]}> 
+           cart,addToCart ,isInCart,deletProduct,totalBuy,emptyCart,quantityTtotal]}> 
             {children} 
           </CartContext.Provider>
   )
